@@ -3,14 +3,14 @@
     <div v-if="!event.edit">
       <span class="has-text-centered details">{{ event.details }}</span>
       <div class="has-text-centered icons">
-        <i class="fa fa-pencil-square edit-icon" @click="editEvent(day.id, event.details)"></i>
-        <i class="fa fa-trash-o delete-icon" @click="deleteEvent(day.id, eventDetails)"></i>
+        <i class="fa fa-pencil-square edit-icon" @click.stop="editEvent(day.id, event.details)"></i>
+        <i class="fa fa-trash-o delete-icon" @click.stop="deleteEvent(day.id, eventDetails)"></i>
       </div>
     </div>
     <div v-if="event.edit">
-      <input type="text" :placeholder="event.details" v-model="newEventDetails" />
+      <input type="text" :placeholder="event.details" v-model="newEventDetails" @click.stop />
       <div class="has-text-centered icons">
-        <i class="fa fa-check" @click="updateEvent(day.id, event.details, newEventDetails)"></i>
+        <i class="fa fa-check" @click.stop="updateEvent(day.id, event.details, newEventDetails)"></i>
       </div>
     </div>
   </div>
