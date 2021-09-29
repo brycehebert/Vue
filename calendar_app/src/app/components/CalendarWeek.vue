@@ -20,6 +20,9 @@ export default {
   components: {
     CalendarDay,
   },
+  beforeMount: function() {
+    store.getAllEvents();
+  }
 };
 </script>
 

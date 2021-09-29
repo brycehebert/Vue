@@ -3,28 +3,21 @@ export const seedData = [
     id: 1,
     abbvTitle: 'Mon',
     fullTitle: 'Monday',
-    events: [
-      { details: 'Get Groceries', edit: false },
-      { details: 'Carpool', edit: false }
-    ],
+    events: [],
     active: true
   },
   {
     id: 2,
     abbvTitle: 'Tue',
     fullTitle: 'Tuesday',
-    events: [
-      { details: 'Yoga/Gym', edit: false }
-    ],
+    events: [],
     active: false
   },
   {
     id: 3,
     abbvTitle: 'Wed',
     fullTitle: 'Wednesday',
-    events: [
-      { details: 'Work social', edit: false }
-    ],
+    events: [],
     active: false
   },
   {
@@ -38,27 +31,21 @@ export const seedData = [
     id: 5,
     abbvTitle: 'Fri',
     fullTitle: 'Friday',
-    events: [
-      { details: 'Friday dinner/drinks', edit: false }
-    ],
+    events: [],
     active: false
   },
   {
     id: 6,
     abbvTitle: 'Sat',
     fullTitle: 'Saturday',
-    events: [
-      { details: 'Chill with the parents', edit: false }
-    ],
+    events: [],
     active: false
   },
   {
     id: 7,
     abbvTitle: 'Sun',
     fullTitle: 'Sunday',
-    events: [
-      { details: 'Movie Night', edit: false }
-    ],
+    events: [],
     active: false
   }
 ]
