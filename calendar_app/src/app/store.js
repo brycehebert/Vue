@@ -39,20 +39,18 @@ export const store = {
         const activeDay = this.getActiveDay();
         console.log(data, activeDay);
         activeDay.events.push(data);
-        // activeDay.events.push({ details: eventDetails, edit: false });
       });
   },
-  editEvent(dayId, eventDetails) {
+  editEvent(event) {
     this.resetEditOfAllEvents();
-    const eventObj = this.getEventObj(dayId, eventDetails);
-    eventObj.edit = true;
+    event.edit = true;
   },
   resetEditOfAllEvents() {
     this.state.data.map((dayObj) => dayObj.events.map((event) => (event.edit = false)));
   },
   updateEvent(event, newEventDetails) {
     fetch("http://localhost:8000/update_one", {
-      method: "post",
+      method: "put",
       headers: {
         "Content-Type": "application/json"
       },
@@ -65,13 +63,9 @@ export const store = {
         event.edit = false;
       });
   },
-  getEventObj(dayId, eventDetails) {
-    const dayObj = this.state.data.find((day) => day.id === dayId);
-    return dayObj.events.find((event) => event.details === eventDetails);
-  },
   deleteEvent(event) {
     fetch("http://localhost:8000/delete_one", {
-      method: "post",
+      method: "delete",
       headers: {
         "Content-Type": "application/json"
       },
@@ -82,7 +76,6 @@ export const store = {
         const arr = this.state.data[event.dayId - 1].events;
         const index = arr.findIndex((ele) => ele._id === event._id);
         arr.splice(index, 1);
-
         console.log(data);
       });
   }

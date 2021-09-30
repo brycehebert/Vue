@@ -5,7 +5,7 @@
       <div class="has-text-centered icons">
         <i
           class="fa fa-pencil-square edit-icon"
-          @click.stop="editEvent(day.id, event.details)"
+          @click.stop="editEvent(event)"
         ></i>
         <i
           class="fa fa-trash-o delete-icon"
@@ -44,8 +44,8 @@ export default {
     },
   },
   methods: {
-    editEvent(dayId, eventDetails) {
-      store.editEvent(dayId, eventDetails);
+    editEvent(event) {
+      store.editEvent(event);
     },
     updateEvent(event, updatedEventDetails) {
       if (updatedEventDetails === "") {
