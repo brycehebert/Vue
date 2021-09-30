@@ -50,18 +50,40 @@ export const store = {
   resetEditOfAllEvents() {
     this.state.data.map((dayObj) => dayObj.events.map((event) => (event.edit = false)));
   },
-  updateEvent(dayId, originalEventDetails, newEventDetails) {
-    const eventObj = this.getEventObj(dayId, originalEventDetails);
-    eventObj.details = newEventDetails;
-    eventObj.edit = false;
+  updateEvent(event, newEventDetails) {
+    fetch("http://localhost:8000/update_one", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ _id: event._id, newEventDetails: newEventDetails })
+    })
+      .then((res) => res.json)
+      .then((data) => {
+        console.log(data);
+        event.details = newEventDetails;
+        event.edit = false;
+      });
   },
   getEventObj(dayId, eventDetails) {
     const dayObj = this.state.data.find((day) => day.id === dayId);
     return dayObj.events.find((event) => event.details === eventDetails);
   },
-  deleteEvent(dayId, eventDetails) {
-    const dayObj = this.state.data.find((day) => day.id === dayId);
-    const eventIndexToRemove = dayObj.events.findIndex((event) => event.details === eventDetails);
-    dayObj.events.splice(eventIndexToRemove, 1);
+  deleteEvent(event) {
+    fetch("http://localhost:8000/delete_one", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ _id: event._id })
+    })
+      .then((res) => res.json)
+      .then((data) => {
+        const arr = this.state.data[event.dayId - 1].events;
+        const index = arr.findIndex((ele) => ele._id === event._id);
+        arr.splice(index, 1);
+
+        console.log(data);
+      });
   }
 };
