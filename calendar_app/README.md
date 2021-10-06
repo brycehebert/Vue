@@ -4,7 +4,7 @@ A calendar app that utilizes Vue, Python, and MongoDB to keep track of events.
 
 ### Install/Run Instructions
 
-Create a file `key.py` in `src` directory  which will contain a MondoDB URI.
+Create a file `key.py` in `src` directory  which will contain a MongoDB URI.
 
 Contents of `key.py`:
 
